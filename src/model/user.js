@@ -2,8 +2,9 @@ const { DataTypes ,Sequelize} = require('sequelize');
 const sequelize = require('../db');
 const Profile = require('./profile');
 const Contact = require('./contact');
-const Contact = require('./address');
-
+const Address = require('./address');
+const Education = require('./education');
+const Experience = require('./experience');
 
 const User = sequelize.define('User', {
   firstName: {
@@ -41,6 +42,16 @@ User.hasOne(Contact, {
 User.hasOne(Address, {
   foreignKey: 'userId',
   as: 'address',
+});
+
+User.hasOne(Education, {
+  foreignKey: 'userId',
+  as: 'education',
+});
+
+User.hasOne(Experience, {
+  foreignKey: 'userId',
+  as: 'experience',
 });
 
 module.exports = User;
